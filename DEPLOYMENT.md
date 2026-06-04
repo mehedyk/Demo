@@ -77,9 +77,10 @@ All text, statistics, courses, and bios are structured as editable JavaScript/Ty
 3. Click **Add new site** > **Import an existing project**.
 4. Authorize your git provider and select your repository.
 5. In **Build settings**:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `.next` (or leave default, Netlify detects Next.js configurations automatically and provisions serverless Netlify Functions).
-6. Click **Deploy site**.
+   - Netlify will automatically detect and read these settings from [netlify.toml](file:///k:/Own/demo/netlify.toml):
+     - **Build command**: `npm run build`
+     - **Publish directory**: `out`
+6. Click **Deploy site**. Next.js will generate a static build, which Netlify hosts directly on their global CDN for fast response times.
 
 ### Option B: Netlify CLI/Drag-and-Drop
 1. Build your project locally using `npm run build`.

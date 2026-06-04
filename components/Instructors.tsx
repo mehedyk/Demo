@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Globe, Shield } from "lucide-react";
-import Image from "next/image";
 
 interface Instructor {
   id: number;
