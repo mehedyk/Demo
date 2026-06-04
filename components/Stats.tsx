@@ -29,10 +29,10 @@ export default function Stats() {
   // Stat definitions
   // EDIT: stats /}
   const statsList = [
-    { value: 500, suffix: "+", label: "Graduates Trained", label बांग्लादेश: "৫০০+ গ্র্যাজুয়েট" },
-    { value: 10, suffix: "+", label: "Professional Courses", labelBangladesh: "১০+ কোর্স" },
-    { value: 2010, suffix: "", label: "Serving Since", labelBangladesh: "২০১০ থেকে" },
-    { value: 100, suffix: "%", label: "Govt. Approved & Certified", labelBangladesh: "১০০% অনুমোদিত" }
+    { value: 500, suffix: "+", label: "Graduates Trained" },
+    { value: 10, suffix: "+", label: "Professional Courses" },
+    { value: 2010, suffix: "", label: "Serving Since" },
+    { value: 100, suffix: "%", label: "Govt. Approved & Certified" }
   ];
   // / EDIT
 
