@@ -7,7 +7,7 @@ export default function AdmissionBanner() {
     <section className="relative w-full min-h-[290px] flex items-center justify-center py-16 px-6 overflow-hidden z-10">
       
       {/* Self-contained CSS keyframe animation block for shifting background gradients */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes gradientShift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
@@ -18,7 +18,7 @@ export default function AdmissionBanner() {
           background-size: 300% 300%;
           animation: gradientShift 16s ease infinite;
         }
-      `}</style>
+      `}} />
 
       {/* Shifting Gradient Background */}
       <div className="absolute inset-0 banner-gradient -z-20 w-full h-full" />

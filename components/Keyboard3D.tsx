@@ -73,21 +73,13 @@ class ClickSynth {
   }
 }
 
-let audioSynth: ClickSynth;
+let audioSynth: ClickSynth | null = null;
 let keyClickSound: any = null;
 let spacebarSound: any = null;
 let enterSound: any = null;
 
 if (typeof window !== "undefined") {
   audioSynth = new ClickSynth();
-  try {
-    const { Howl } = require("howler");
-    keyClickSound = new Howl({ src: ["/sounds/key-click.mp3"], volume: 0.5, html5: false });
-    spacebarSound = new Howl({ src: ["/sounds/spacebar.mp3"], volume: 0.6, html5: false });
-    enterSound = new Howl({ src: ["/sounds/enter.mp3"], volume: 0.6, html5: false });
-  } catch (e) {
-    console.warn("Howler load error, falling back to Web Audio API synthesizer node:", e);
-  }
 }
 
 // Key data mappings
@@ -296,6 +288,15 @@ export default function Keyboard3D() {
       if (e.key === "Escape") setActiveCard(null);
     };
     window.addEventListener("keydown", handleKeyDown);
+
+    // Dynamic import Howler inside browser-only client context
+    import("howler").then(({ Howl }) => {
+      keyClickSound = new Howl({ src: ["/sounds/key-click.mp3"], volume: 0.5, html5: false });
+      spacebarSound = new Howl({ src: ["/sounds/spacebar.mp3"], volume: 0.6, html5: false });
+      enterSound = new Howl({ src: ["/sounds/enter.mp3"], volume: 0.6, html5: false });
+    }).catch((err) => {
+      console.warn("Howler load failed, falling back to Web Audio synth:", err);
+    });
 
     return () => {
       window.removeEventListener("resize", checkDevice);

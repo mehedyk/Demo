@@ -1,7 +1,7 @@
 "use client";
 
 import ContactForm from "./ContactForm";
-import { MapPin, Phone, MessageSquare, Facebook, HelpCircle } from "lucide-react";
+import { MapPin, Phone, MessageSquare, Facebook } from "lucide-react";
 
 export default function Contact() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import Logo from "./Logo";
-import { Facebook, Youtube, Twitter, ArrowUp, MessageSquare } from "lucide-react";
+import { Facebook, ArrowUp, MessageSquare } from "lucide-react";
 
 export default function Footer() {
   const handleScrollTop = () => {
