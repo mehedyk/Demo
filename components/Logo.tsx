@@ -1,26 +1,45 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Logo() {
   return (
-    <Link href="#hero" className="flex items-center gap-2.5 group select-none">
-      {/* Stylized eye graphic badge representing "Dristy" */}
+    <a
+      href="https://dristy-institute.netlify.app"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2.5 group select-none cursor-none"
+    >
+      {/* {/* EDIT: replace with real logo asset if available /} */}
       <div className="relative w-8 h-8 flex items-center justify-center">
-        {/* Outer glowing orbital ring */}
-        <div className="absolute inset-0 rounded-full border border-primary/30 group-hover:border-primary/80 group-hover:scale-110 transition-all duration-500 ease-out" />
-        {/* Inner rotating orbital ring */}
-        <div className="absolute w-5 h-5 rounded-full border border-dashed border-secondary/50 group-hover:rotate-180 transition-all duration-1000 ease-in-out" />
-        {/* Core glowing pupil */}
-        <div className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-secondary to-primary shadow-[0_0_8px_#00d4ff]" />
+        {/* Outer orbital ring */}
+        <div className="absolute inset-0 rounded-full border border-[var(--accent)]/30 group-hover:border-[var(--accent)]/80 group-hover:scale-110 transition-all duration-500 ease-out" />
+        
+        {/* Eye icon - stylized SVG representing "Dristy" (vision) */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="2.2"
+          className="w-4.5 h-4.5 relative z-10 transition-all duration-500 group-hover:scale-110"
+        >
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="12" cy="12" r="3" fill="var(--accent)" fillOpacity="0.25" />
+          <circle cx="12" cy="12" r="1.2" fill="var(--accent)" />
+        </svg>
       </div>
-      
-      {/* Stylized display text logo */}
-      <span className="font-display font-black tracking-widest text-lg bg-gradient-to-r from-white via-slate-200 to-primary bg-clip-text text-transparent group-hover:text-glow-cyan transition-all duration-300">
-        {/* EDIT: institute name /} */}
-        DRISTY
-        {/* / EDIT */}
-      </span>
-    </Link>
+
+      <div className="flex flex-col leading-none">
+        <span 
+          className="font-black tracking-wide text-lg text-[var(--accent)] text-glow"
+          style={{ fontFamily: "var(--font-bengali)" }}
+        >
+          দৃষ্টি
+        </span>
+        <span className="font-display font-black tracking-widest text-[9px] uppercase text-white opacity-85 group-hover:opacity-100 transition-opacity">
+          INSTITUTE
+        </span>
+      </div>
+      {/* / EDIT */}
+    </a>
   );
 }

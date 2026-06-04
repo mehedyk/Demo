@@ -1,18 +1,16 @@
-# Deployment & Customization Guide
+# Dristy Institute - Deployment & Customization Guide
 
-This file provides comprehensive instructions on how to run, customize, and deploy the **Dristy Computer Training Institute** website.
+This file provides comprehensive guidelines on running, customizing, and deploying the **Dristy Computer Training Institute** website.
 
 ---
 
-## 1. Running Locally
+## 1. Local Setup Instructions
 
-To install dependencies and start the development server locally:
-
-1. **Install Dependencies**:
+1. **Install Node.js Dependencies**:
    ```bash
    npm install
    ```
-2. **Start Development Server**:
+2. **Start the Development Server**:
    ```bash
    npm run dev
    ```
@@ -21,105 +19,117 @@ To install dependencies and start the development server locally:
 
 ---
 
-## 2. Customizing Placeholder Content
+## 2. Complete Mapping of Customization Placeholders
 
-All text, statistics, courses, and bios are structured as editable JavaScript/TypeScript models and are clearly demarcated with `{/* EDIT: ... */}` comments. Here is a list of all customizable files:
+All editable texts, numbers, and databases are wrapped in `{/* EDIT: description */}` comments. Here is a list of all customizable files:
 
-### Brand Header & Logo
-- **Logo Text**: Located in [components/Logo.tsx](file:///k:/Own/demo/components/Logo.tsx) inside the `{/* EDIT: institute name */}` comments.
+### Brand Header & Logos
+- **Logo Graphic / Text**: Located in [components/Logo.tsx](file:///k:/Own/demo/components/Logo.tsx) inside the `{/* EDIT: replace with real logo asset if available */}` comments.
 
 ### Hero & Taglines
-- **Accreditation Badge**: Located in [components/Hero.tsx](file:///k:/Own/demo/components/Hero.tsx) under `{/* EDIT: Govt Approved Training Badge */}`.
-- **Institute Main Heading**: Located in [components/Hero.tsx](file:///k:/Own/demo/components/Hero.tsx) under `{/* EDIT: institute name */}`.
-- **Hero Description / Tagline**: Located in [components/Hero.tsx](file:///k:/Own/demo/components/Hero.tsx) under `{/* EDIT: tagline */}`.
+- **Accreditation Pill Badge**: Located in [components/Hero.tsx](file:///k:/Own/demo/components/Hero.tsx) under `{/* EDIT: accreditation details */}`.
+- **Looping Course Names**: Located in [components/Hero.tsx](file:///k:/Own/demo/components/Hero.tsx) under `{/* EDIT: course name */}`.
+- **Accreditation Status Banner**: Located in [components/MarqueeStrip.tsx](file:///k:/Own/demo/components/MarqueeStrip.tsx) under `{/* EDIT: marquee text details */}`.
 
-### Institute Statistics
-- **Numbers & Metrics**: Located in [components/Stats.tsx](file:///k:/Own/demo/components/Stats.tsx) under `{/* EDIT: stats */}`. You can customize graduates count, courses count, establishment year, and BTEB board indicators.
+### Institutional Statistics
+- **Metric Values & Labels**: Located in [components/Stats.tsx](file:///k:/Own/demo/components/Stats.tsx) under `{/* EDIT: stats */}`. Adjust graduate count, courses count, and durations.
 
 ### Course Syllabus Grid
-- **Course Descriptions & Pricing**: Located in [components/Courses.tsx](file:///k:/Own/demo/components/Courses.tsx) under `{/* EDIT: course details */}`. You can edit course names, durations, prices in BDT, and descriptions.
+- **Course Descriptions & Pricing**: Located in [components/Courses.tsx](file:///k:/Own/demo/components/Courses.tsx) under `{/* EDIT: course details */}`. You can edit course names (Bengali + English), durations, BDT pricing, and categories.
+- **Courses Section Subtitle / Intro**: Located in [components/Courses.tsx](file:///k:/Own/demo/components/Courses.tsx) under `{/* EDIT: description */}`.
 
-### Feature Scrolling Panels
-- **Stages 1 - 4 Texts**: Located in [components/ScrollLinkedFeature.tsx](file:///k:/Own/demo/components/ScrollLinkedFeature.tsx) under the corresponding Stage comments (e.g. `{/* EDIT: Stage 1 text */}`). Update headers and descriptions mapping to the rotating 3D laptop stages.
-
-### Instructors List
-- **Trainer Bio & Social links**: Located in [components/Instructors.tsx](file:///k:/Own/demo/components/Instructors.tsx) under `{/* EDIT: instructor details */}`. Adjust names, designations, custom text bio descriptions, skill tags, and social profiles.
+### 3D Interactive Keyboard
+- **Course Descriptions inside Overlay Modal**: Located in [components/Keyboard3D.tsx](file:///k:/Own/demo/components/Keyboard3D.tsx) under `{/* EDIT: course name */}` inside `handleKeyInteraction`. Customize the floating cards.
 
 ### Student Reviews
-- **Testimonial Quotes**: Located in [components/Testimonials.tsx](file:///k:/Own/demo/components/Testimonials.tsx) under `{/* EDIT: testimonials */}`. Customize review copy, names, rating stars, and avatar seeds.
+- **Student Reviews Data**: Located in [components/Testimonials.tsx](file:///k:/Own/demo/components/Testimonials.tsx) under `{/* EDIT: real student testimonials */}`. Change quotes, names, rating stars, and avatar seeds.
 
 ### Address & Contact Information
-- **Phone, Email, Maps Location**: Located in [components/Contact.tsx](file:///k:/Own/demo/components/Contact.tsx) under the `{/* EDIT: contact info */}` comments. Customize the HQ address, support hotlines, contact email, and technical board code.
+- **Facebook Fanpage Redirect Link**: Located in [components/Contact.tsx](file:///k:/Own/demo/components/Contact.tsx) under `{/* EDIT: Facebook page URL */}`.
 
 ### Footer Information
-- **Bio, Legal, Social URLs**: Located in [components/Footer.tsx](file:///k:/Own/demo/components/Footer.tsx).
-  - Footer description bio: `{/* EDIT: footer bio */}`
-  - Social media URLs: `{/* EDIT: social links */}`
-  - Bottom navigation shortcuts: `{/* EDIT: nav links */}`
-  - Operational details: `{/* EDIT: legal details */}`
+- **Description & Social URLs**: Located in [components/Footer.tsx](file:///k:/Own/demo/components/Footer.tsx).
+  - Short description: `{/* EDIT: footer bio */}`
+  - Fanpage link: `{/* EDIT: social links */}`
+  - Navigation links: `{/* EDIT: nav links */}`
+  - Operating codes: `{/* EDIT: legal details */}`
 
 ---
 
-## 3. Replacing Favicon and Logo Graphics
+## 3. How to Add Classroom Photos
 
-- **Favicon**:
-  - Replace the vector icon at `public/favicon.svg` with your custom SVG logo/icon. The site will automatically load it.
-- **Logo Graphic**:
-  - Currently, a premium text logo is active. To swap this for a picture logo, edit [components/Logo.tsx](file:///k:/Own/demo/components/Logo.tsx) and replace the text element with a standard HTML `<img>` tag or Next.js `<Image />` pointing to your logo asset in the `public/` directory.
-
----
-
-## 4. Deploying to Netlify (Free Tier)
-
-### Option A: Connected Git Repository (Recommended)
-1. Push your code repository to **GitHub**, **GitLab**, or **Bitbucket**.
-2. Go to [Netlify](https://www.netlify.com/) and sign up / log in to your account.
-3. Click **Add new site** > **Import an existing project**.
-4. Authorize your git provider and select your repository.
-5. In **Build settings**:
-   - Netlify will automatically detect and read these settings from [netlify.toml](file:///k:/Own/demo/netlify.toml):
-     - **Build command**: `npm run build`
-     - **Publish directory**: `out`
-6. Click **Deploy site**. Next.js will generate a static build, which Netlify hosts directly on their global CDN for fast response times.
-
-### Option B: Netlify CLI/Drag-and-Drop
-1. Build your project locally using `npm run build`.
-2. Drag and drop the compiled output folder into the Netlify drag-and-drop dashboard portal.
+1. Save your classroom photographs or campus graphics inside the `/public/images/` directory (create this directory if it does not exist).
+2. Point your standard `<img>` source tag to `/images/photo_name.jpg`. For example, inside [components/Instructors.tsx](file:///k:/Own/demo/components/Instructors.tsx), replace the Dicebear placeholder avatars with:
+   ```html
+   <img src="/images/instructor_one.jpg" className="w-full h-full object-cover" />
+   ```
 
 ---
 
-## 5. Deploying to Vercel (Free Tier)
+## 4. Setting the Default Theme
 
-1. Push your codebase to **GitHub**.
-2. Navigate to [Vercel](https://vercel.com) and log in.
-3. Click **Add New** > **Project**.
-4. Import your website repository.
-5. Vercel automatically configures the project settings for Next.js:
-   - **Framework Preset**: `Next.js`
-   - **Build Command**: `next build`
-   - **Output Directory**: `.next`
-6. Click **Deploy**. Vercel will build the 3D application and provide an active production domain (e.g. `dristy-institute.vercel.app`).
-
----
-
-## 6. Configuring Custom Domains
-
-### On Netlify:
-1. In your site dashboard, go to **Site configuration** > **Domain management** > **Domains**.
-2. Click **Add domain alias** and input your custom domain (e.g. `dristyinstitute.com`).
-3. Netlify will prompt you to configure DNS records. Point your domain's **CNAME** or **ANAME** records to Netlify's DNS servers as shown.
-
-### On Vercel:
-1. Go to your Vercel project **Settings** > **Domains**.
-2. Add your custom domain (e.g. `dristyinstitute.com`).
-3. Set up the custom DNS records at your domain registrar:
-   - For root domain (A record): Point to `76.76.21.21`.
-   - For subdomain CNAME (e.g. `www`): Point to `cname.vercel-dns.com`.
+By default, **Theme A (Classic Navy & Gold)** loads first.
+To change the default theme to **Theme B (Modern Purple & Coral)**:
+1. Open [components/ThemeProvider.tsx](file:///k:/Own/demo/components/ThemeProvider.tsx).
+2. Change the default React state:
+   ```typescript
+   // Change from "a" to "b"
+   const [theme, setTheme] = useState<Theme>("b");
+   ```
+3. Update the default document attribute block in `useEffect`:
+   ```typescript
+   // Change default fallback attribute from "a" to "b"
+   document.documentElement.setAttribute("data-theme", "b");
+   ```
 
 ---
 
-## 7. Environment Variables
+## 5. Updating Contacts (Hotlines, WhatsApp)
 
-This application does **not** require any backend API database keys or third-party client environment tokens to build. 
+- **Phone Helpline**: Search and replace `01643-928687` (e.g., `tel:+8801643928687`) across components.
+- **WhatsApp Link**: Update the WhatsApp redirect URL `https://wa.me/8801643928687` in `Hero.tsx`, `Contact.tsx`, and `AdmissionBanner.tsx`.
 
-If you integrate dynamic email services (e.g. EmailJS, SendGrid) inside the contact form later, specify your tokens in a local `.env.local` file and add them under settings on your Netlify or Vercel dashboard.
+---
+
+## 6. Cloud Deployments (Free Tier)
+
+### Deploying to Netlify
+We have configured a `netlify.toml` file in the root. Netlify will build the static HTML bundle automatically:
+1. Connect your repository to your **GitHub** account.
+2. Log in to [Netlify](https://www.netlify.com/).
+3. Click **Add new site** > **Import an existing project** and select the repository.
+4. Netlify will read your [netlify.toml](file:///k:/Own/demo/netlify.toml) automatically:
+   *   **Build command**: `npm run build`
+   *   **Publish directory**: `out`
+5. Click **Deploy site**.
+
+### Deploying to Vercel
+1. Log in to [Vercel](https://vercel.com).
+2. Click **Add New** > **Project** and select your GitHub repository.
+3. Vercel automatically detects Next.js. In **Build & Development Settings**, configure:
+   *   **Framework Preset**: `Next.js`
+   *   **Build Command**: `next build`
+   *   **Output Directory**: `out` (Vercel automatically detects static HTML exports).
+4. Click **Deploy**.
+
+### Custom Domains Configuration
+- Point your domain's DNS settings at your registrar:
+  *   **A record** (for root domain): Point to Vercel's IP `76.76.21.21` or Netlify's DNS load balancer.
+  *   **CNAME record** (for `www` subdomain): Point to `cname.vercel-dns.com` or your Netlify site URL.
+- Enter your domain inside Vercel's **Domains Settings** or Netlify's **Domain Management** dashboard.
+
+---
+
+## 7. Phase 2 Database & API Route Setup
+
+When you are ready to connect a database (MongoDB, PostgreSQL via Prisma, or Supabase) and enable the admissions/student portals:
+1. Remove `output: 'export'` from [next.config.js](file:///k:/Own/demo/next.config.js) to enable server-side rendering (SSR) and API routes.
+2. Build your backend API endpoints in `/app/api/admissions/route.ts` and `/app/api/contact/route.ts`.
+3. In [components/ContactForm.tsx](file:///k:/Own/demo/components/ContactForm.tsx), replace the simulation state loaders with an active `fetch()` request calling your endpoint:
+   ```typescript
+   const response = await fetch('/api/contact', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify(formState)
+   });
+   ```

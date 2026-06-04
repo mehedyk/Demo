@@ -1,30 +1,29 @@
 "use client";
 
 import Logo from "./Logo";
-import { Facebook, Youtube, Twitter, ArrowUp } from "lucide-react";
+import { Facebook, Youtube, Twitter, ArrowUp, MessageSquare } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="relative w-full bg-[#050505] border-t border-slate-900/80 pt-16 pb-8 overflow-hidden z-10">
+    <footer className="relative w-full bg-[var(--bg-secondary)] border-t border-[var(--border-color)] pt-16 pb-8 overflow-hidden z-10 select-none">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 pb-12 border-b border-slate-900/60">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-12 border-b border-[var(--border-color)]/60">
           
-          {/* Col 1: Brand & Bio */}
-          <div className="md:col-span-2 space-y-6">
+          {/* Logo, Bio & Social row */}
+          <div className="md:col-span-5 space-y-6">
             <Logo />
-            <p className="text-slate-400 text-xs md:text-sm max-w-sm font-sans leading-relaxed">
+            <p className="text-slate-400 text-xs max-w-sm font-sans leading-relaxed">
               {/* EDIT: footer bio /} */}
-              Providing premium technical training and certification since 2010. Empowers professionals in software development, visual arts, and security networks under official national board permissions.
+              দৃষ্টি কম্পিউটার প্রশিক্ষণ ইনস্টিটিউট একটি সরকারি অনুমোদিত প্রতিষ্ঠান। Gopalpur, Tangail এবং সংলগ্ন অঞ্চলের শিক্ষার্থীদের আধুনিক আইটি শিক্ষায় শিক্ষিত করাই আমাদের মূল লক্ষ্য।
               {/* / EDIT */}
             </p>
+            
             {/* Social channels */}
             {/* EDIT: social links /} */}
             <div className="flex items-center gap-4 text-slate-500">
@@ -32,77 +31,85 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary transition-colors cursor-none"
+                className="hover:text-[var(--accent)] transition-colors cursor-none"
+                aria-label="Facebook Page"
               >
-                <Facebook className="w-4 h-4" />
+                <Facebook className="w-4.5 h-4.5" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://wa.me/8801643928687"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary transition-colors cursor-none"
+                className="hover:text-[var(--accent)] transition-colors cursor-none"
+                aria-label="WhatsApp Hotline"
               >
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors cursor-none"
-              >
-                <Twitter className="w-4 h-4" />
+                <MessageSquare className="w-4.5 h-4.5" />
               </a>
             </div>
             {/* / EDIT */}
           </div>
 
-          {/* Col 2: Navigation links */}
-          <div>
-            <h4 className="font-display font-bold text-xs uppercase tracking-wider text-white mb-6">
-              Quick Shortcuts
+          {/* Col 2: About / Academy details */}
+          <div className="md:col-span-3">
+            <h4 className="font-display font-black text-xs uppercase tracking-wider text-white mb-6">
+              About Institute
             </h4>
-            {/* EDIT: nav links /} */}
+            {/* EDIT: legal details /} */}
             <ul className="space-y-3.5 text-xs text-slate-400 font-sans">
               <li>
-                <a href="#hero" className="hover:text-primary transition-colors cursor-none">Home</a>
+                <span className="block text-slate-500 text-[10px] font-mono uppercase tracking-wider">Accreditation</span>
+                <span>বাংলাদেশ কারিগরি শিক্ষাবোর্ড অনুমোদিত</span>
               </li>
               <li>
-                <a href="#courses" className="hover:text-primary transition-colors cursor-none">Courses Offered</a>
+                <span className="block text-slate-500 text-[10px] font-mono uppercase tracking-wider">Established</span>
+                <span>২০২৩ খ্রিষ্টাব্দ</span>
               </li>
               <li>
-                <a href="#about" className="hover:text-primary transition-colors cursor-none">Feature Lab</a>
-              </li>
-              <li>
-                <a href="#instructors" className="hover:text-primary transition-colors cursor-none">Mentors Team</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-primary transition-colors cursor-none">Support Contact</a>
+                <span className="block text-slate-500 text-[10px] font-mono uppercase tracking-wider">BTEB Code</span>
+                <span className="font-mono">কোড: ৫০৪৩৬</span>
               </li>
             </ul>
             {/* / EDIT */}
           </div>
 
-          {/* Col 3: Legal & Support */}
-          <div>
-            <h4 className="font-display font-bold text-xs uppercase tracking-wider text-white mb-6">
-              Institutional Info
+          {/* Col 3: Quick Links */}
+          <div className="md:col-span-2">
+            <h4 className="font-display font-black text-xs uppercase tracking-wider text-white mb-6">
+              Quick Links
             </h4>
-            {/* EDIT: legal details /} */}
-            <ul className="space-y-3.5 text-xs text-slate-400 font-sans">
+            {/* EDIT: nav links /} */}
+            <ul className="space-y-3 text-xs text-slate-400 font-sans">
               <li>
-                <span className="block text-slate-500">Registration</span>
-                <span className="font-mono">BTEB Code: 50436</span>
+                <a href="#hero" className="hover:text-[var(--accent)] transition-colors cursor-none">Home</a>
               </li>
               <li>
-                <span className="block text-slate-500">Operating Hours</span>
-                <span>Sat - Thu (9 AM - 8 PM)</span>
+                <a href="#courses" className="hover:text-[var(--accent)] transition-colors cursor-none">Our Courses</a>
               </li>
               <li>
-                <span className="block text-slate-500">Student Helpline</span>
-                <span className="font-mono">+880 1712-345678</span>
+                <a href="#keyboard" className="hover:text-[var(--accent)] transition-colors cursor-none">Keyboard Lab</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-[var(--accent)] transition-colors cursor-none">Contact Info</a>
               </li>
             </ul>
             {/* / EDIT */}
+          </div>
+
+          {/* Col 4: Contacts shortcut */}
+          <div className="md:col-span-2">
+            <h4 className="font-display font-black text-xs uppercase tracking-wider text-white mb-6">
+              Support
+            </h4>
+            <ul className="space-y-3 text-xs text-slate-400 font-sans">
+              <li>
+                <span className="block text-slate-500 text-[10px] font-mono uppercase tracking-wider">Helpline</span>
+                <span className="font-mono font-bold">01643-928687</span>
+              </li>
+              <li>
+                <span className="block text-slate-500 text-[10px] font-mono uppercase tracking-wider">Location</span>
+                <span>Gopalpur, Tangail</span>
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -111,8 +118,8 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Copyright notice */}
-          <div className="text-[10px] md:text-xs text-slate-500 font-sans font-medium text-center md:text-left">
-            <span>&copy; {currentYear} Dristy Computer Training Institute. All rights reserved.</span>
+          <div className="text-[10px] md:text-xs text-slate-500 font-sans text-center md:text-left">
+            <span>&copy; 2025 দৃষ্টি কম্পিউটার প্রশিক্ষণ ইনস্টিটিউট। সর্বস্বত্ব সংরক্ষিত।</span>
           </div>
 
           {/* Developed By credit (Required exact signature) */}
@@ -122,7 +129,7 @@ export default function Footer() {
               href="https://mehedyk.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-primary hover:text-glow-cyan font-bold transition-all duration-300 cursor-none"
+              className="text-slate-400 hover:text-[var(--accent)] hover:text-glow font-bold transition-all duration-300 cursor-none"
             >
               Mehedyk
             </a>
@@ -131,7 +138,8 @@ export default function Footer() {
           {/* Scroll to Top */}
           <button
             onClick={handleScrollTop}
-            className="p-2.5 rounded-full border border-slate-900 bg-slate-950/40 text-slate-500 hover:text-primary hover:border-primary/20 transition-all duration-300 cursor-none"
+            className="p-2 rounded-full border border-[var(--border-color)] bg-slate-950/40 text-slate-500 hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 cursor-none"
+            aria-label="Scroll back to top"
           >
             <ArrowUp className="w-3.5 h-3.5" />
           </button>

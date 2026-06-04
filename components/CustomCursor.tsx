@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
 
-  // Core coordinates
+  // Tracking raw coordinates
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Springs for lag-free organic movement
-  const springConfig = { damping: 35, stiffness: 350, mass: 0.35 };
+  // Spring values for the outer magnetic ring
+  const springConfig = { damping: 40, stiffness: 380, mass: 0.4 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Avoid running custom cursors on touch screens
+    // Only mount cursor follower on pointing devices (e.g. desktop mice)
     const checkDevice = () => {
       const isTouch = window.matchMedia("(pointer: coarse)").matches;
       setIsMobile(isTouch);
@@ -33,7 +33,7 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", moveCursor);
 
-    // Detect clickable objects for magnifying hover effects
+    // Dynamic magnet hover checks
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
@@ -63,28 +63,42 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* 1. Orbit Ring Cursor */}
+      {/* 1. Outer Magnetic Follower Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary/50 pointer-events-none z-[99999] mix-blend-screen"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border pointer-events-none z-[99999] mix-blend-difference flex items-center justify-center"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
           scale: isHovered ? 1.6 : 1,
-          borderColor: isHovered ? "#00d4ff" : "rgba(0, 212, 255, 0.4)",
-          backgroundColor: isHovered ? "rgba(0, 212, 255, 0.05)" : "rgba(0, 212, 255, 0)",
+          borderColor: "var(--accent)",
+          backgroundColor: isHovered ? "rgba(var(--accent-rgb), 0.15)" : "rgba(0, 0, 0, 0)",
         }}
-      />
-      {/* 2. Glow Core Pupil Cursor */}
+      >
+        <AnimatePresence>
+          {isHovered && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.6 }}
+              className="text-[6px] font-black font-mono tracking-widest text-white uppercase pointer-events-none absolute"
+            >
+              Click
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* 2. Primary Glowing Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-primary pointer-events-none z-[99999] shadow-[0_0_10px_#00d4ff]"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-[var(--accent)] pointer-events-none z-[99999] shadow-[0_0_10px_var(--accent-glow)]"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
-          scale: isHovered ? 0.3 : 1,
+          scale: isHovered ? 0.35 : 1,
         }}
       />
     </>
