@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import * as THREE from "three";
+import { useTheme } from "./ThemeProvider";
 
 // --- AUDIO SYNTHESIZER FALLBACK CLASS ---
 // Generates satisfying click sounds in-code if static mp3 assets are missing
@@ -268,6 +269,7 @@ function InteractiveKeyboard({
 }
 
 export default function Keyboard3D() {
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [activeCard, setActiveCard] = useState<any>(null);
